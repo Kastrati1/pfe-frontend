@@ -8,7 +8,7 @@ class InscriptionContainer extends Component {
     this.state = {
       email: "",
       password: "",
-      username: "",
+      login: "",
       first_name: "",
       last_name: ""
     };
@@ -27,7 +27,7 @@ class InscriptionContainer extends Component {
       e.preventDefault();
     }
 
-    const url = "http://localhost:8000/app1/inscription/";
+    const url = "http://localhost:8000/app1/inscription";
     const params = this.state;
     sendApiRequest({ url, method: "POST", params: params })
       .then(response => {
@@ -43,7 +43,7 @@ class InscriptionContainer extends Component {
     return (
       <InscriptionComponent
         email={this.state.email}
-        username={this.state.username}
+        login={this.state.login}
         first_name={this.state.first_name}
         last_name={this.state.last_name}
         password={this.state.password}
