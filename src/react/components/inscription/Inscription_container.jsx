@@ -38,6 +38,7 @@ class InscriptionContainer extends Component {
         this.setState({});
       });
   }
+  
   componentDidMount() {}
   render() {
     return (

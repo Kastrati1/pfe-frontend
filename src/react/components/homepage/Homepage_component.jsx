@@ -3,7 +3,7 @@ import React from "react";
 const HomepageComponent = products => {
   return (
     <div>
-      <h1>Testing of HomepageComponent 111</h1>
+      <h1>HOMEPAGE</h1>
     </div>
   );
 };
