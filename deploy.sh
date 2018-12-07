@@ -78,6 +78,7 @@ if [ -e "$DEPLOYMENT_SOURCE/package.json" ]; then
   exitWithMessageOnError "npm failed"
   echo "Building react app"
   eval npm run build
+  eval npm config set strict-ssl false
   exitWithMessageOnError "react build failed"
  cd - > /dev/null
 fi
