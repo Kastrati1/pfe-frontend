@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import InscriptionComponent from "./Inscription_component";
+import InscriptionComponent from "./inscription_component";
 import sendApiRequest from "../../utils/api";
+import "./style.css";
+
 class InscriptionContainer extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +40,6 @@ class InscriptionContainer extends Component {
         this.setState({});
       });
   }
-  
   componentDidMount() {}
   render() {
     return (

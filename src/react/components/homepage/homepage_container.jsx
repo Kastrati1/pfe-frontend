@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import HomepageComponent from "./Homepage_component";
+import HomepageComponent from "./homepage_component";
 import sendApiRequest from "../../utils/api";
 
 class HomepageContainer extends Component {
