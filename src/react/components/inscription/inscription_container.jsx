@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import InscriptionComponent from "./inscription_component";
 import sendApiRequest from "../../utils/api";
-import "./style.css";
+import "./style.scss";
 
 class InscriptionContainer extends Component {
   constructor(props) {
