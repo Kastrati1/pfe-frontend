@@ -39,4 +39,4 @@ const deleteSession = () => {
   clearJWT();
 };
 
-export { createSession, deleteSession, retrieveJWT };
+export { createSession, deleteSession, retrieveJWT, storeJWT };

@@ -9,12 +9,7 @@ import {
   Button
 } from "reactstrap";
 
-const LoginComponent = ({
-  login,
-  password,
-  signin,
-  onFieldChange
-}) => {
+const LoginComponent = ({ username, password, signin, onFieldChange }) => {
   return (
     <Container className="App">
       <h2>Sign In</h2>
@@ -24,10 +19,10 @@ const LoginComponent = ({
             <Label>Username</Label>
             <Input
               type="text"
-              name="login"
-              id="login"
-              placeholder="login"
-              value={login}
+              name="username"
+              id="username"
+              placeholder="Username"
+              value={username}
               onChange={onFieldChange}
             />
           </FormGroup>

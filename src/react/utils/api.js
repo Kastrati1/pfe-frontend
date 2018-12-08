@@ -1,8 +1,12 @@
+import { retrieveJWT } from "../services/session";
+
 function sendApiRequest({ url, method = "GET", params = null }) {
+  const jwt = retrieveJWT();
+  console.log("jwt before fetch : ", jwt);
   const headers = new Headers();
   headers.append("Accept", "application/json");
   headers.append("Content-Type", "application/json");
-
+  headers.append("Authorization", "JWT " + jwt);
   //headers.append("Access-Control-Allow-Origin", "*");
 
   function handleResponse(response) {
@@ -16,7 +20,6 @@ function sendApiRequest({ url, method = "GET", params = null }) {
   return fetch(url, {
     method: method,
     headers: headers,
-
     body: params && JSON.stringify(params)
   }).then(handleResponse);
 }

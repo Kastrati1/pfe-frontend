@@ -1,22 +1,18 @@
 import React, { Component } from "react";
-import InscriptionComponent from "./inscription_component";
+import LoginComponent from "./login_component";
 import sendApiRequest from "../../utils/api";
 import { storeJWT, retrieveJWT } from "../../services/session.js";
-import "./style.scss";
 
-class InscriptionContainer extends Component {
+class LoginContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: "",
-      password: "",
       username: "",
-      first_name: "",
-      last_name: ""
+      password: ""
     };
 
-    this.signup = this.signup.bind(this);
+    this.signin = this.signin.bind(this);
     this.onFieldChange = this.onFieldChange.bind(this);
   }
   onFieldChange(event) {
@@ -25,14 +21,14 @@ class InscriptionContainer extends Component {
     });
   }
 
-  signup(e) {
+  signin(e) {
     if (e) {
       e.preventDefault();
     }
-
-    const url = "http://localhost:8000/app1/users/";
-
+    const url = "http://localhost:8000/token-auth/";
     const params = this.state;
+    console.log(this.state);
+
     sendApiRequest({ url, method: "POST", params: params })
       .then(response => {
         console.log(response);
@@ -43,19 +39,21 @@ class InscriptionContainer extends Component {
         this.setState({});
       });
   }
+
   componentDidMount() {}
   render() {
+    const jwt = retrieveJWT();
+    if (jwt) {
+      console.log(jwt);
+    }
     return (
-      <InscriptionComponent
-        email={this.state.email}
+      <LoginComponent
         username={this.state.username}
-        first_name={this.state.first_name}
-        last_name={this.state.last_name}
         password={this.state.password}
-        signup={this.signup}
+        signin={this.signin}
         onFieldChange={this.onFieldChange}
       />
     );
   }
 }
-export default InscriptionContainer;
+export default LoginContainer;
