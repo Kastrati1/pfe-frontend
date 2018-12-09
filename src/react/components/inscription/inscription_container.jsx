@@ -35,7 +35,15 @@ class InscriptionContainer extends Component {
 
     const url = "http://localhost:8000/app1/users/";
 
-    const params = this.state;
+    const params2 = this.state;
+    const params = {
+      username: this.state.username,
+      email: this.state.email,
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
+      password: this.state.password
+    };
+    console.log(params, params2);
     sendApiRequest({ url, method: "POST", params: params })
       .then(response => {
         console.log(response);
@@ -67,6 +75,11 @@ class InscriptionContainer extends Component {
             isloading: false
           });
         });
+    } else {
+      this.setState({
+        loggedin: false,
+        isloading: false
+      });
     }
   }
   render() {
