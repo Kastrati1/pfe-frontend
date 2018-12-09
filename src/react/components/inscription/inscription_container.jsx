@@ -71,7 +71,11 @@ class InscriptionContainer extends Component {
   }
   render() {
     if (this.state.isloading) {
-      return <h2>Loading...</h2>;
+      return (
+        <div class="lds-hourglass">
+          <h2>Loading...</h2>
+        </div>
+      );
     }
     return (
       <React.Fragment>

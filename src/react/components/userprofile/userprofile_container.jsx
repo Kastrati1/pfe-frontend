@@ -6,7 +6,8 @@ class UserProfileContainer extends Component {
     first_name: "",
     last_name: "",
     username: "",
-    email: ""
+    email: "",
+    isLoading: true
   };
 
   componentDidMount() {
@@ -18,14 +19,25 @@ class UserProfileContainer extends Component {
           first_name: response.first_name,
           last_name: response.last_name,
           username: response.username,
-          email: response.email
+          email: response.email,
+          isLoading: false
         });
       })
       .catch(err => {
         console.log("error userprofile \n ", err);
+        this.setState({
+          isLoading: false
+        });
       });
   }
   render() {
+    if (this.state.isLoading) {
+      return (
+        <div class="lds-hourglass">
+          <h2>Loading...</h2>
+        </div>
+      );
+    }
     return (
       <UserProfileComponent
         email={this.state.email}
