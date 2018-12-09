@@ -12,7 +12,7 @@ import ListeProduitContainer from "./liste_produit/liste_produit_container";
 function RouterOutlet() {
   return (
     <React.Fragment>
-      <Route exact path="/" />
+      <Route exact path="/" component={HomeContainer} />
       <Route path="/Home" component={HomeContainer} />
       <Route path="/Inscription" component={InscriptionContainer} />
       <Route path="/Login" component={LoginContainer} />
