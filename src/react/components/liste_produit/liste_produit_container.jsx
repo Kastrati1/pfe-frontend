@@ -10,18 +10,12 @@ class ListeProduitContainer extends React.Component {
         this.state = {
             products : [],
         };
+
         this.getProducts = this.getProducts.bind(this);
+
     }
 
-    render(){
-        return (
-            <React.Fragment>
-                <ListeProduitComponent
-                    products={this.state.products}
-                />
-            </React.Fragment>
-        )
-    }
+    
 
     getProducts() {
         const url = "http://localhost:8000/app1/products";
@@ -49,6 +43,18 @@ class ListeProduitContainer extends React.Component {
     componentDidMount(){
         console.log("dans comp did mount")
 ;        this.getProducts();
+    }
+
+    render(){
+        var rows = [];
+        for(var i=0; i<2; i++){
+            rows.push( <ListeProduitComponent productName = {"gggy"} />);
+        }
+        return (
+            <React.Fragment>
+                <tbody>{rows}</tbody>;
+            </React.Fragment>
+        )
     }
 
 }
