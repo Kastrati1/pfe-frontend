@@ -1,13 +1,13 @@
 import React from "react";
-
-import {
-  Container,
-} from "reactstrap";
+import ProductsContainer from "../products/products_container";
+import { Container } from "reactstrap";
 
 const HomepageComponent = () => {
   return (
     <Container className="text-center">
-      <h1 className="cover-heading">Home</h1>
+      <h1 className="cover-heading">Welcome to IPL-EXPRESS</h1>
+      <br />
+      <ProductsContainer />
     </Container>
   );
 };
