@@ -13,13 +13,28 @@ function retrieveJWT() {
 function clearJWT() {
   localStorage.removeItem("JWT");
 }
+const currentUser = () => {
+  return sendApiRequest({
+    url: "/app1/current_user"
+  })
+    .then(user => {
+      const jwt = user.token;
+      storeJWT(jwt);
+      return user;
+    })
+    .catch(() => {
+      const jwt = "FAKE JWT";
+      storeJWT(jwt);
+      return jwt;
+    });
+};
 
-const createSession = (email, password) => {
+const createSession = (username, password) => {
   return sendApiRequest({
     url: "/api/sessions",
     method: "POST",
     params: {
-      email: email,
+      username: username,
       password: password
     }
   })
@@ -39,4 +54,4 @@ const deleteSession = () => {
   clearJWT();
 };
 
-export { createSession, deleteSession, retrieveJWT, storeJWT };
+export { createSession, deleteSession, retrieveJWT, storeJWT, currentUser };

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LoginComponent from "./login_component";
 import sendApiRequest from "../../utils/api";
 import { storeJWT, retrieveJWT } from "../../services/session.js";
+import { Redirect } from "react-router-dom";
 
 class LoginContainer extends Component {
   constructor(props) {
@@ -9,7 +10,9 @@ class LoginContainer extends Component {
 
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      loggedin: false,
+      isloading: true //used to wait for the fetch before rendering
     };
 
     this.signin = this.signin.bind(this);
@@ -33,26 +36,52 @@ class LoginContainer extends Component {
       .then(response => {
         console.log(response);
         storeJWT(response.token);
+        this.setState({
+          loggedin: true
+        });
       })
       .catch(error => {
         console.error(error);
-        this.setState({});
+        this.setState({ loggedin: false });
       });
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    if (retrieveJWT()) {
+      const url = "http://localhost:8000/app1/current_user";
+      sendApiRequest({ url })
+        .then(response => {
+          console.log(response);
+          this.setState({
+            loggedin: true,
+            isloading: false
+          });
+        })
+        .catch(error => {
+          console.log("error login container cdm", error);
+          this.setState({
+            loggedin: false,
+            isloading: false
+          });
+        });
+    }
+  }
   render() {
-    const jwt = retrieveJWT();
-    if (jwt) {
-      console.log(jwt);
+    if (this.state.isloading) {
+      return <h2>Loading...</h2>;
     }
     return (
-      <LoginComponent
-        username={this.state.username}
-        password={this.state.password}
-        signin={this.signin}
-        onFieldChange={this.onFieldChange}
-      />
+      <React.Fragment>
+        {this.state.loggedin && <Redirect to="/Userprofile" />}
+        {!this.state.loggedin && (
+          <LoginComponent
+            username={this.state.username}
+            password={this.state.password}
+            signin={this.signin}
+            onFieldChange={this.onFieldChange}
+          />
+        )}
+      </React.Fragment>
     );
   }
 }

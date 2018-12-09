@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import InscriptionComponent from "./inscription_component";
 import sendApiRequest from "../../utils/api";
 import { storeJWT, retrieveJWT } from "../../services/session.js";
+import { Redirect } from "react-router-dom";
 import "./style.scss";
 
 class InscriptionContainer extends Component {
@@ -13,7 +14,9 @@ class InscriptionContainer extends Component {
       password: "",
       username: "",
       first_name: "",
-      last_name: ""
+      last_name: "",
+      loggedin: false,
+      isloading: true //used to wait for the fetch before rendering
     };
 
     this.signup = this.signup.bind(this);
@@ -37,24 +40,52 @@ class InscriptionContainer extends Component {
       .then(response => {
         console.log(response);
         storeJWT(response.token);
+        this.setState({
+          loggedin: true
+        });
       })
       .catch(error => {
         console.error(error);
-        this.setState({});
+        this.setState({ loggedin: false });
       });
   }
-  componentDidMount() {}
+  componentDidMount() {
+    if (retrieveJWT()) {
+      const url = "http://localhost:8000/app1/current_user";
+      sendApiRequest({ url })
+        .then(response => {
+          console.log(response);
+          this.setState({
+            loggedin: true,
+            isloading: false
+          });
+        })
+        .catch(error => {
+          console.log("error inscription container cdm", error);
+          this.setState({
+            loggedin: false,
+            isloading: false
+          });
+        });
+    }
+  }
   render() {
+    if (this.state.isloading) {
+      return <h2>Loading...</h2>;
+    }
     return (
-      <InscriptionComponent
-        email={this.state.email}
-        username={this.state.username}
-        first_name={this.state.first_name}
-        last_name={this.state.last_name}
-        password={this.state.password}
-        signup={this.signup}
-        onFieldChange={this.onFieldChange}
-      />
+      <React.Fragment>
+        {this.state.loggedin && <Redirect to="/Userprofile" />}
+        <InscriptionComponent
+          email={this.state.email}
+          username={this.state.username}
+          first_name={this.state.first_name}
+          last_name={this.state.last_name}
+          password={this.state.password}
+          signup={this.signup}
+          onFieldChange={this.onFieldChange}
+        />
+      </React.Fragment>
     );
   }
 }
