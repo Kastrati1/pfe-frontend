@@ -29,6 +29,9 @@ const Navigation = () => {
             <Nav.Link className="nav-link" as={Link} to="/Logout">
               Logout
             </Nav.Link>
+            <Nav.Link className="nav-link" as={Link} to="/Items">
+              items
+            </Nav.Link>
           </Nav>
         </Navbar>
       </div>
