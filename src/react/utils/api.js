@@ -1,4 +1,4 @@
-import { retrieveJWT } from "../services/session";
+import { retrieveJWT, currentUser, deleteSession } from "../services/session";
 
 function sendApiRequest({ url, method = "GET", params = null }) {
   const jwt = retrieveJWT();
@@ -11,13 +11,14 @@ function sendApiRequest({ url, method = "GET", params = null }) {
 
   function handleResponse(response) {
     if (!response.ok) {
+      deleteSession();
       console.log(response);
       throw Error(response.statusText);
     }
     return response.json();
   }
   if (method === "GET") {
-    headers.append("Authorization", "JWT " + jwt);
+    if (jwt) headers.append("Authorization", "JWT " + jwt);
   }
   return fetch(url, {
     method: method,

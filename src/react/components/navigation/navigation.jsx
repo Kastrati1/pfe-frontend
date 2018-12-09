@@ -26,6 +26,9 @@ const Navigation = () => {
             <Nav.Link className="nav-link" as={Link} to="/UserProfile">
               My Profile
             </Nav.Link>
+            <Nav.Link className="nav-link" as={Link} to="/Items">
+              items
+            </Nav.Link>
           </Nav>
         </Navbar>
       </div>
