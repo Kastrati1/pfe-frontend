@@ -7,7 +7,7 @@ class StripeContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      amount: "2",
+      product_id: this.props.location.state.product_id,
       paid: false
     };
     this.onFieldChange = this.onFieldChange.bind(this);
@@ -28,20 +28,20 @@ class StripeContainer extends React.Component {
         //token successfully created
         console.log("stripe token ", result.token.id);
 
-        //recover amount here
-        this.sendToken2BackEnd(result.token.id, this.state.amount);
+        //recover product_id here
+        this.sendToken2BackEnd(result.token.id, this.state.product_id);
       } else {
         console.log("stripe token not created");
       }
     });
   }
-  sendToken2BackEnd(stripetok, amount) {
+  sendToken2BackEnd(stripetok, product_id) {
     var obj = {
-      tokenID: stripetok,
-      amount: amount
+      token: stripetok,
+      product_id: product_id
     };
 
-    const url = `http://localhost:8000/app1/pay/`;
+    const url = `http://localhost:8000/app1/pay`;
     sendApiRequest({ url, method: "POST", params: obj })
       .then(response => {
         this.setState({
@@ -52,9 +52,9 @@ class StripeContainer extends React.Component {
         console.error(error);
       });
   }
-  componentDidMount() {
-    console.log(this.props);
-  }
+componentDidMount() {
+  console.log(this.props)
+}
   render() {
     if (this.state.paid) {
       return <h2>Thank you </h2>;

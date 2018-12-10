@@ -1,6 +1,6 @@
 import React from "react";
-import { CardElement, injectStripe } from "react-stripe-elements";
-import { Container, Row, Col, Form, Image, Button } from "react-bootstrap";
+import { CardElement } from "react-stripe-elements";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 const StripeComponent = ({ pay, onFieldChange }) => {
   //const amount = 10;  //exemple 10euros
   return (

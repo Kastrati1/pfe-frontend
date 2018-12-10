@@ -46,7 +46,7 @@ class ProductsContainer extends React.Component {
           <Redirect
             to={{
               pathname: "/stripe",
-              state: { id: "this.state.product_id" }
+              state: { product_id: this.state.product_id }
             }}
           />
         )}
