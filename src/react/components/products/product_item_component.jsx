@@ -14,8 +14,8 @@ const ProductItemComponent = ({ product, buy }) => {
     <div class="wrapper">
       <div class="product-img">
         <img
-          // src={require("../../../images/" + product.image_url)}
-          src={require("../../../images/iphone.png")}
+          src={require("../../../images/" + product.image_url)}
+          // src={require("../../../images/iphone.png")}
           height="420"
           width="327"
           alt="monimage"
@@ -24,7 +24,7 @@ const ProductItemComponent = ({ product, buy }) => {
       <div class="product-info">
         <div class="product-text">
           <h1>{product.name}</h1>
-          <h2>Category</h2>
+          <h2>en stock:{product.stock}</h2>
           {/* <p>Harvest Vases are a reinterpretation<br> of peeled fruits and vegetables as<br> functional objects. The surfaces<br> appear to be sliced and pulled aside,<br> allowing room for growth. </p> */}
           <p>{product.description}</p>
         </div>

@@ -8,6 +8,7 @@ import LoginContainer from "./login/login_container";
 import UserProfileContainer from "./userprofile/userprofile_container";
 import LogoutContainer from "./logout/logout_container";
 import ListProductsContainer from "./list_products/list_products_container";
+import StripeContainer from "./stripe/stripe_container";
 
 function RouterOutlet() {
   return (
@@ -19,6 +20,7 @@ function RouterOutlet() {
       <Route path="/UserProfile" component={UserProfileContainer} />
       <Route path="/Logout" component={LogoutContainer} />
       <Route path="/Items" component={ListProductsContainer} />
+      <Route path="/stripe" component={StripeContainer} />
     </React.Fragment>
   );
 }
