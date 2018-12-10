@@ -4,7 +4,7 @@ import { Container, Card, Button, CardImg, CardTitle, CardText, CardGroup,
     CardSubtitle, CardBody } from 'reactstrap';
 
 
-const ListeProduitComponent = ({productName, productDescription, productPrice}) => {
+const ListProductsComponent = ({productName, productDescription, productPrice}) => {
 
     return (
         <Container>
@@ -26,4 +26,4 @@ const ListeProduitComponent = ({productName, productDescription, productPrice}) 
     );
 };
 
-export default ListeProduitComponent;
+export default ListProductsComponent;

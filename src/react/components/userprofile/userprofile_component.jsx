@@ -1,13 +1,38 @@
 import React from "react";
-const UserProfileComponent = ({ first_name, last_name, username, email }) => {
+import { ListGroup, ListGroupItem} from 'reactstrap';
+import { Table } from 'reactstrap';
+
+const UserProfileComponent = ({ first_name, last_name, username, email, user_products }) => {
   return (
+
     <div>
-      <p>username : {username}</p>
-      <p>first name : {first_name}</p>
-      <p>last name : {last_name} </p>
-      <p>email name : {email}</p>
+      
+      <Table>
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th> {first_name} </th>
+            <th> {last_name} </th>
+            <th> {username} </th>
+            <th> {email} </th>
+          </tr>
+        </tbody>
+      </Table>
+    
+      <ListGroup>
+        <ListGroupItem>Product1</ListGroupItem>
+        <ListGroupItem>Product2</ListGroupItem>
+      </ListGroup>
+
     </div>
-  );
+   );
 };
 
 export default UserProfileComponent;

@@ -1,8 +1,8 @@
 import React from "react";
 import sendApiRequest from "../../utils/api";
-import ListeProduitComponent from "./liste_produit_component";
+import ListProductsComponent from "./list_products_component";
 
-class ListeProduitContainer extends React.Component {
+class ListProductsContainer extends React.Component {
   constructor(props) {
     super(props);
 
@@ -44,7 +44,7 @@ class ListeProduitContainer extends React.Component {
   render() {
     var rows = [];
     for (var i = 0; i < 2; i++) {
-      rows.push(<ListeProduitComponent productName={"gggy"} />);
+      rows.push(<ListProductsComponent productName={"gggy"} />);
     }
     return (
       <React.Fragment>
@@ -54,4 +54,4 @@ class ListeProduitContainer extends React.Component {
   }
 }
 
-export default ListeProduitContainer;
+export default ListProductsContainer;

@@ -6,8 +6,6 @@ function sendApiRequest({ url, method = "GET", params = null }) {
   const headers = new Headers();
   headers.append("Accept", "application/json");
   headers.append("Content-Type", "application/json");
-  //headers.append("Authorization", "JWT " + jwt); give errors sometimes when sent with post requests
-  //headers.append("Access-Control-Allow-Origin", "*");
 
   function handleResponse(response) {
     if (!response.ok) {

@@ -7,14 +7,35 @@ class UserProfileContainer extends Component {
     last_name: "",
     username: "",
     email: "",
-    isLoading: true
+    user_products: [],
+    isLoading: true,
+    isCharged: false
   };
 
-  componentDidMount() {
+  render() {
+    if (this.state.isLoading) {
+      return (
+        <div class="lds-hourglass">
+          <h2>Loading...</h2>
+        </div>
+      );
+    }
+    return (
+      <UserProfileComponent
+        email={this.state.email}
+        username={this.state.username}
+        first_name={this.state.first_name}
+        last_name={this.state.last_name}
+        user_products={this.state.user_products}
+      />
+    );
+
+  }
+
+  getCurrentUser(){
     const url = "http://localhost:8000/app1/current_user/";
     sendApiRequest({ url })
       .then(response => {
-        console.log(response);
         this.setState({
           first_name: response.first_name,
           last_name: response.last_name,
@@ -30,22 +51,28 @@ class UserProfileContainer extends Component {
         });
       });
   }
-  render() {
-    if (this.state.isLoading) {
-      return (
-        <div class="lds-hourglass">
-          <h2>Loading...</h2>
-        </div>
-      );
-    }
-    return (
-      <UserProfileComponent
-        email={this.state.email}
-        username={this.state.username}
-        first_name={this.state.first_name}
-        last_name={this.state.last_name}
-      />
-    );
+
+  getUserProducts(){
+    const url = "http://localhost:8000/app1/current_user_products/";
+    sendApiRequest({url})
+    .then(response => {
+      this.setState({
+        user_products: response,
+      }); 
+      console.log("REPONSE USER_PRODUCTS => " + response);
+    })
+    .catch(err => {
+      console.log("error userproducts \n", err);
+      this.setState({
+        isLoading: false
+      });
+    });
+
+  }
+
+  componentDidMount() {
+    this.getCurrentUser();
+    this.getUserProducts();
   }
 }
 
