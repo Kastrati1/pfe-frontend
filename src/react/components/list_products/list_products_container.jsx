@@ -7,7 +7,8 @@ class ListProductsContainer extends React.Component {
     super(props);
 
     this.state = {
-      products: []
+      products: [],
+      requestIsDone: false,
     };
 
     this.getProducts = this.getProducts.bind(this);
@@ -17,14 +18,9 @@ class ListProductsContainer extends React.Component {
     const url = "http://localhost:8000/app1/products";
     sendApiRequest({ url, method: "GET" })
       .then(response => {
-        console.log("THE RESPONSE ==> " + response);
-        console.log("reponse du get dans back ===>" + JSON.stringify(response));
-        console.log("parcourir le JSon ===> " + response[0].name);
-        //console.log("reponse du get dans back ===>"+ JSON.stringify(response) );
-        //console.log("resp indice 0  de reponse ==> " + response[0] );
-        //response = JSON.stringify(response);
         this.setState({
-          products: response //object javascript
+          products: response,
+          requestIsDone : true,
         });
       })
       .catch(error => {
@@ -33,24 +29,31 @@ class ListProductsContainer extends React.Component {
           products: []
         });
       });
-    console.log("FIN DE getProducts");
   }
 
   componentDidMount() {
-    console.log("dans comp did mount");
     this.getProducts();
   }
 
   render() {
-    var rows = [];
-    for (var i = 0; i < 2; i++) {
-      rows.push(<ListProductsComponent productName={"gggy"} />);
+    if(this.state.requestIsDone){
+      var rows = [];
+      var product = this.state.products;
+      for (var i = 0; i < this.state.products.length; i++) {
+        rows.push(<ListeProduitComponent productName={product[i].name} productPrice={product[i].price} productDescription={product[i].description} productURL={product[i].image_url}/>);
+      }
+      return (
+        <React.Fragment>
+          <tbody>{rows}</tbody>;
+        </React.Fragment>
+      );
     }
-    return (
-      <React.Fragment>
-        <tbody>{rows}</tbody>;
-      </React.Fragment>
-    );
+    else{
+      return (
+        <React.Fragment>
+        </React.Fragment>
+      );
+    }
   }
 }
 
