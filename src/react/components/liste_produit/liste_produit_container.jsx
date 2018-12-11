@@ -18,9 +18,6 @@ class ListeProduitContainer extends React.Component {
     const url = "http://localhost:8000/app1/products";
     sendApiRequest({ url, method: "GET" })
       .then(response => {
-        console.log("THE RESPONSE ==> " + response);
-        console.log("reponse du get dans back ===>" + JSON.stringify(response));
-        console.log("parcourir le JSon ===> " + response[0].name);
         this.setState({
           products: response,
           requestIsDone : true,
