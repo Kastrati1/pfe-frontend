@@ -1,4 +1,4 @@
-import { retrieveJWT, deleteSession } from "../services/session";
+import { retrieveJWT } from "../services/session";
 
 function sendApiRequest({ url, method = "GET", params = null }) {
   const jwt = retrieveJWT();
@@ -6,15 +6,14 @@ function sendApiRequest({ url, method = "GET", params = null }) {
   const headers = new Headers();
   headers.append("Accept", "application/json");
   headers.append("Content-Type", "application/json");
-  //headers.append("Authorization", "JWT " + jwt); give errors sometimes when sent with post requests
   //headers.append("Access-Control-Allow-Origin", "*");
-  if (jwt) headers.append("Authorization", "JWT " + jwt);
+  
+  if (jwt) headers.append("Authorization", "JWT " + jwt); //Can cause problems with django if null jwt is given
 
-  console.log("recherche process.env.API_URL ", process.env.API_URL);
+  
 
   function handleResponse(response) {
     if (!response.ok) {
-      deleteSession();
       console.log(response);
       throw Error(response.statusText);
     }
