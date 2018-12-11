@@ -1,8 +1,8 @@
 import React from "react";
 import sendApiRequest from "../../utils/api";
-import ListeProduitComponent from "./liste_produit_component";
+import ListProductsComponent from "./list_products_component";
 
-class ListeProduitContainer extends React.Component {
+class ListProductsContainer extends React.Component {
   constructor(props) {
     super(props);
 
@@ -20,7 +20,7 @@ class ListeProduitContainer extends React.Component {
       .then(response => {
         this.setState({
           products: response,
-          requestIsDone : true,
+          requestIsDone: true,
         });
       })
       .catch(error => {
@@ -36,11 +36,11 @@ class ListeProduitContainer extends React.Component {
   }
 
   render() {
-    if(this.state.requestIsDone){
+    if (this.state.requestIsDone) {
       var rows = [];
       var product = this.state.products;
       for (var i = 0; i < this.state.products.length; i++) {
-        rows.push(<ListeProduitComponent productName={product[i].name} productPrice={product[i].price} productDescription={product[i].description} productURL={product[i].image_url}/>);
+        rows.push(<ListProductsComponent productName={product[i].name} productPrice={product[i].price} productDescription={product[i].description} productURL={product[i].image_url} />);
       }
       return (
         <React.Fragment>
@@ -48,7 +48,7 @@ class ListeProduitContainer extends React.Component {
         </React.Fragment>
       );
     }
-    else{
+    else {
       return (
         <React.Fragment>
         </React.Fragment>
@@ -57,4 +57,4 @@ class ListeProduitContainer extends React.Component {
   }
 }
 
-export default ListeProduitContainer;
+export default ListProductsContainer;

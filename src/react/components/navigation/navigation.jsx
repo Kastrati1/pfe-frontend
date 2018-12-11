@@ -30,7 +30,7 @@ const Navigation = () => {
               Logout
             </Nav.Link>
             <Nav.Link className="nav-link" as={Link} to="/Items">
-              items
+              Items
             </Nav.Link>
           </Nav>
         </Navbar>
