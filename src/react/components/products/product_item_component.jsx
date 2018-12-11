@@ -11,8 +11,8 @@ import React from "react";
 
 const ProductItemComponent = ({ product, buy }) => {
   return (
-    <div class="wrapper">
-      <div class="product-img">
+    <div className="wrapper">
+      <div className="product-img">
         <img
           //src={require("../../../images/" + product.image_url)}
           // src={require("../../../images/iphone.png")}
@@ -21,14 +21,14 @@ const ProductItemComponent = ({ product, buy }) => {
           alt="monimage"
         />
       </div>
-      <div class="product-info">
-        <div class="product-text">
+      <div className="product-info">
+        <div className="product-text">
           <h1>{product.name}</h1>
           <h2>en stock:{product.stock}</h2>
           {/* <p>Harvest Vases are a reinterpretation<br> of peeled fruits and vegetables as<br> functional objects. The surfaces<br> appear to be sliced and pulled aside,<br> allowing room for growth. </p> */}
           <p>{product.description}</p>
         </div>
-        <div class="product-price-btn">
+        <div className="product-price-btn">
           <p>
             <span>{product.price}€</span>
           </p>
