@@ -17,7 +17,7 @@ const currentUser = () => {
   return sendApiRequest({
     url: "/app1/current_user"
   })
-    .then(user => {
+    .then( user => {
       const jwt = user.token;
       storeJWT(jwt);
       return user;
@@ -28,27 +28,6 @@ const currentUser = () => {
       return jwt;
     });
 };
-
-// const createSession = (username, password) => {
-//   return sendApiRequest({
-//     url: "/api/sessions",
-//     method: "POST",
-//     params: {
-//       username: username,
-//       password: password
-//     }
-//   })
-//     .then(data => {
-//       const jwt = data.jwt;
-//       storeJWT(jwt);
-//       return jwt;
-//     })
-//     .catch(() => {
-//       const jwt = "FAKE JWT";
-//       storeJWT(jwt);
-//       return jwt;
-//     });
-// };
 
 const deleteSession = () => {
   clearJWT();

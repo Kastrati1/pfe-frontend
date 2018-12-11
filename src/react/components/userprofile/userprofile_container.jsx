@@ -62,7 +62,7 @@ class UserProfileContainer extends Component {
       console.log("REPONSE USER_PRODUCTS => " + response);
     })
     .catch(err => {
-      console.log("error userproducts \n", err);
+      console.log("ERROR userProducts \n", err);
       this.setState({
         isLoading: false
       });
@@ -72,7 +72,9 @@ class UserProfileContainer extends Component {
 
   componentDidMount() {
     this.getCurrentUser();
+    console.log("CDM AFTER getCurrentUser");
     this.getUserProducts();
+    console.log("CDM AFTER getUserProducts");
   }
 }
 
