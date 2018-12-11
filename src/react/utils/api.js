@@ -17,9 +17,9 @@ function sendApiRequest({ url, method = "GET", params = null }) {
     }
     return response.json();
   }
-  if (method === "GET") {
-    if (jwt) headers.append("Authorization", "JWT " + jwt);
-  }
+
+  if (jwt) headers.append("Authorization", "JWT " + jwt);
+
   return fetch(url, {
     method: method,
     headers: headers,
