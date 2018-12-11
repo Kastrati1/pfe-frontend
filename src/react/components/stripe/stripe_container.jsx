@@ -2,13 +2,14 @@ import React from "react";
 import StripeComponent from "./stripe_component";
 import sendApiRequest from "../../utils/api";
 import { injectStripe } from "react-stripe-elements";
-
+import "./style.scss";
 class StripeContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       product_id: this.props.location.state.product_id,
-      paid: false
+      paid: false,
+      quantity: ""
     };
     this.onFieldChange = this.onFieldChange.bind(this);
     this.create_stripe_token = this.create_stripe_token.bind(this);
@@ -29,16 +30,21 @@ class StripeContainer extends React.Component {
         console.log("stripe token ", result.token.id);
 
         //recover product_id here
-        this.sendToken2BackEnd(result.token.id, this.state.product_id);
+        this.sendToken2BackEnd(
+          result.token.id,
+          this.state.product_id,
+          this.state.quantity
+        );
       } else {
         console.log("stripe token not created");
       }
     });
   }
-  sendToken2BackEnd(stripetok, product_id) {
+  sendToken2BackEnd(stripetok, product_id, quantity) {
     var obj = {
       token: stripetok,
-      product_id: product_id
+      product_id: product_id,
+      quantity: quantity
     };
 
     const url = `http://localhost:8000/app1/pay`;
@@ -52,9 +58,9 @@ class StripeContainer extends React.Component {
         console.error(error);
       });
   }
-componentDidMount() {
-  console.log(this.props)
-}
+  componentDidMount() {
+    console.log(this.props);
+  }
   render() {
     if (this.state.paid) {
       return <h2>Thank you </h2>;
@@ -63,6 +69,7 @@ componentDidMount() {
         <StripeComponent
           pay={this.create_stripe_token}
           onFieldChange={this.onFieldChange}
+          quantity={this.state.quantity}
         />
       );
     }
