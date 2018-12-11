@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
+require("dotenv").config();
 import "./style/cover.css";
 
 import ReactMain from "./react/components/main";

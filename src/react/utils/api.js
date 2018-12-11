@@ -1,5 +1,7 @@
 import { retrieveJWT, deleteSession } from "../services/session";
 
+console.log(process.env.API_URL);
+
 function sendApiRequest({ url, method = "GET", params = null }) {
   const jwt = retrieveJWT();
   console.log("jwt before fetch : ", jwt);
