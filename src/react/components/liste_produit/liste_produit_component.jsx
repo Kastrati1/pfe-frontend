@@ -4,7 +4,7 @@ import { Container, Card, Button, CardImg, CardTitle, CardText, CardGroup,
     CardSubtitle, CardBody } from 'reactstrap';
 
 
-const ListeProduitComponent = ({productName, productDescription, productPrice}) => {
+const ListeProduitComponent = ({productName, productDescription, productPrice, productURL}) => {
 
     return (
         <Container>
