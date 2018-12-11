@@ -2,7 +2,9 @@ import { retrieveJWT, deleteSession } from "../services/session";
 
 function sendApiRequest({ url, method = "GET", params = null }) {
   const jwt = retrieveJWT();
+
   console.log("jwt before fetch : ", jwt);
+  
   const headers = new Headers();
   headers.append("Accept", "application/json");
   headers.append("Content-Type", "application/json");
@@ -15,9 +17,9 @@ function sendApiRequest({ url, method = "GET", params = null }) {
     }
     return response.json();
   }
-
-  if (jwt) headers.append("Authorization", "JWT " + jwt);
-
+  if (method === "GET") {
+    if (jwt) headers.append("Authorization", "JWT " + jwt);
+  }
   return fetch(url, {
     method: method,
     headers: headers,

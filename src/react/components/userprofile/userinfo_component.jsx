@@ -1,8 +1,7 @@
 import React from "react";
-import { ListGroup, ListGroupItem} from 'reactstrap';
 import { Table } from 'reactstrap';
 
-const UserProfileComponent = ({ first_name, last_name, username, email, user_products }) => {
+const UserInfoComponent = ({ first_name, last_name, username, email}) => {
   return (
 
     <div>
@@ -26,13 +25,9 @@ const UserProfileComponent = ({ first_name, last_name, username, email, user_pro
         </tbody>
       </Table>
     
-      <ListGroup>
-        <ListGroupItem>Product1</ListGroupItem>
-        <ListGroupItem>Product2</ListGroupItem>
-      </ListGroup>
 
     </div>
    );
 };
 
-export default UserProfileComponent;
+export default UserInfoComponent;

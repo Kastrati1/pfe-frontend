@@ -4,11 +4,7 @@ import { Container, Card, Button, CardImg, CardTitle, CardText, CardGroup,
     CardSubtitle, CardBody } from 'reactstrap';
 
 
-<<<<<<< HEAD:src/react/components/list_products/list_products_component.jsx
-const ListProductsComponent = ({productName, productDescription, productPrice}) => {
-=======
-const ListeProduitComponent = ({productName, productDescription, productPrice, productURL}) => {
->>>>>>> 9a108096b84b23335e37456ba3324745757193b8:src/react/components/liste_produit/liste_produit_component.jsx
+const ListProductsComponent = ({productName, productDescription, productPrice, productURL}) => {
 
     return (
       <Container>

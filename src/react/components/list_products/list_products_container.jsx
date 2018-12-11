@@ -20,7 +20,7 @@ class ListProductsContainer extends React.Component {
       .then(response => {
         this.setState({
           products: response,
-          requestIsDone : true,
+          requestIsDone: true,
         });
       })
       .catch(error => {
@@ -36,11 +36,11 @@ class ListProductsContainer extends React.Component {
   }
 
   render() {
-    if(this.state.requestIsDone){
+    if (this.state.requestIsDone) {
       var rows = [];
       var product = this.state.products;
       for (var i = 0; i < this.state.products.length; i++) {
-        rows.push(<ListeProduitComponent productName={product[i].name} productPrice={product[i].price} productDescription={product[i].description} productURL={product[i].image_url}/>);
+        rows.push(<ListProductsComponent productName={product[i].name} productPrice={product[i].price} productDescription={product[i].description} productURL={product[i].image_url} />);
       }
       return (
         <React.Fragment>
@@ -48,7 +48,7 @@ class ListProductsContainer extends React.Component {
         </React.Fragment>
       );
     }
-    else{
+    else {
       return (
         <React.Fragment>
         </React.Fragment>
