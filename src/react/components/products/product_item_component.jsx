@@ -15,7 +15,7 @@ const ProductItemComponent = ({ product, buy }) => {
       <div className="product-img">
         <img
           src={require("../../../images/" + product.image_url)}
-          // src={require("../../../images/iphone.png")}
+          // change pas s'il te plait
           height="420"
           width="327"
           alt="monimage"
