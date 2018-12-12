@@ -4,6 +4,7 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 const outputDirectory = "dist";
 const projectRoot = path.resolve(__dirname, "..");
+
 require("dotenv").config();
 //process.env.NODE_ENV == development
 console.log(process.env);

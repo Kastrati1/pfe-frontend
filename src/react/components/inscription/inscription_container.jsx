@@ -34,7 +34,7 @@ class InscriptionContainer extends Component {
       e.preventDefault();
     }
 
-    const url = "http://localhost:8000/app1/users/";
+    const url = "app1/users/";
     const params = {
       username: this.state.username,
       email: this.state.email,
@@ -58,7 +58,7 @@ class InscriptionContainer extends Component {
   }
   componentDidMount() {
     if (retrieveJWT()) {
-      const url = "http://localhost:8000/app1/current_user";
+      const url = "app1/current_user";
       sendApiRequest({ url })
         .then(response => {
           console.log(response);

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./style/cover.css";
 import ReactMain from "./react/components/main";
 
-require("dotenv").config();
+console.log(require("dotenv").config());
 //process.env.NODE_ENV == development
 console.log("process var " , process.env);
 console.log("process var test " ,process.env.test);

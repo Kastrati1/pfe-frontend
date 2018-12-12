@@ -15,7 +15,7 @@ class ListProductsContainer extends React.Component {
   }
 
   getProducts() {
-    const url = "http://localhost:8000/app1/products";
+    const url = "app1/products";
     sendApiRequest({ url, method: "GET" })
       .then(response => {
         this.setState({

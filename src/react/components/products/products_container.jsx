@@ -23,7 +23,7 @@ class ProductsContainer extends React.Component {
     });
   }
   getProducts() {
-    const url = "http://localhost:8000/app1/products";
+    const url = "app1/products";
     sendApiRequest({ url })
       .then(response => {
         console.log(response);
