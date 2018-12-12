@@ -14,6 +14,9 @@ module.exports = {
     extensions: [".js", ".jsx", ".json"],
     modules: ["node_modules", "src/client"]
   },
+  node: {
+    fs: 'empty'
+  },
   module: {
     rules: [
       {

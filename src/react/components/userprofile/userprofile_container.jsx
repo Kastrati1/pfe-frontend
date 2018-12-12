@@ -3,15 +3,21 @@ import sendApiRequest from "../../utils/api";
 import UserProductsComponent from "./userproducts_component";
 import UserInfoComponent from "./userinfo_component";
 class UserProfileContainer extends Component {
-  state = {
+  constructor(props) {
+    super(props);
+
+    this.state = {
     first_name: "",
     last_name: "",
     username: "",
     email: "",
     user_products: [],
     isLoading: true
+     };
+     this.getCurrentUser = this.getCurrentUser.bind(this);
+     this.getUserProducts = this.getUserProducts.bind(this);
   };
-
+  
 
   getCurrentUser() {
     const url = "app1/current_user/";

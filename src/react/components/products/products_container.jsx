@@ -48,6 +48,7 @@ class ProductsContainer extends React.Component {
             }}
           />
         )}
+        
         <ProductsComponent products={this.state.products} buy={this.buy} />
       </React.Fragment>
     );
