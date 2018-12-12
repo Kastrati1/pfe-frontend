@@ -20,12 +20,9 @@ const InscriptionComponent = ({
   return (
 
     <main className="inner cover">
-
       <h1 className="cover-heading" >Sign-In</h1><br />
-      <p className="lead">Welcom to our website, please fill-in the from to fully enjoy our services.</p><br />
-
+      <p className="lead">Welcome to our website, please fill-in the form to fully enjoy our services.</p><br />
       <Form className="inner cover" onSubmit={e => signup(e)}>
-
         <Col>
           <FormGroup>
             <div class="form-group row">
@@ -43,7 +40,7 @@ const InscriptionComponent = ({
             </div>
           </FormGroup>
         </Col>
-
+        
         <Col>
           <FormGroup>
             <div class="form-group row">

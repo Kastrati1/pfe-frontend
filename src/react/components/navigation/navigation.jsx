@@ -16,7 +16,6 @@ const Navigation = () => {
             <Nav.Link className="nav-link" as={Link} to="/Home">
               Home
             </Nav.Link>
-
             <Nav.Link className="nav-link" as={Link} to="/Inscription">
               Inscription
             </Nav.Link>

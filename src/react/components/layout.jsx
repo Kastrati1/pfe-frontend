@@ -11,7 +11,6 @@ export class Layout extends Component {
       <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
         <React.Fragment>
           <Navigation />
-
           <Container>
             <Row>
               <Col />

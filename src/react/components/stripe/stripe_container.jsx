@@ -5,6 +5,7 @@ import { injectStripe } from "react-stripe-elements";
 import "./style.scss";
 class StripeContainer extends React.Component {
   constructor(props) {
+
     super(props);
     this.state = {
       product_id: this.props.location.state.product_id,

@@ -1,7 +1,6 @@
 import React from "react";
 import ProductsComponent from "./products_component";
 import { Redirect } from "react-router-dom";
-
 import sendApiRequest from "../../utils/api";
 import "./style.scss";
 
@@ -22,7 +21,6 @@ class ProductsContainer extends React.Component {
       buy_clicked: true,
       product_id: product.id
     });
-    console.log(product.id);
   }
   getProducts() {
     const url = "http://localhost:8000/app1/products";

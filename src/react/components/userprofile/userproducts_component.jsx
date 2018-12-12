@@ -4,7 +4,6 @@ import { Table } from 'reactstrap';
 const UserProductsComponent = ({ product_name, product_description, product_prix }) => {
   return (
     <div>
-
       <Table>
         <thead>
           <tr>

@@ -29,7 +29,6 @@ class LoginContainer extends Component {
       e.preventDefault();
     }
     const url = "http://localhost:8000/token-auth/";
-    //const params = this.state;
     const params = {
       username: this.state.username,
       password: this.state.password

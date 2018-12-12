@@ -5,7 +5,6 @@ const UserInfoComponent = ({ first_name, last_name, username, email}) => {
   return (
 
     <div>
-      
       <Table>
         <thead>
           <tr>
@@ -24,8 +23,6 @@ const UserInfoComponent = ({ first_name, last_name, username, email}) => {
           </tr>
         </tbody>
       </Table>
-    
-
     </div>
    );
 };

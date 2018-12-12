@@ -41,8 +41,6 @@ class UserProfileContainer extends Component {
           user_products: response,
           isRequestDone: true
         });
-        console.log("REPONSE USER_PRODUCTS => " + response[0].fields.name);
-        console.log("REPONSE USER_PRODUCTS => " + JSON.stringify(response));
       })
       .catch(err => {
         console.log("ERROR userProducts \n", err);
@@ -82,8 +80,6 @@ class UserProfileContainer extends Component {
         <tbody>{rows}</tbody>
       </React.Fragment>
     );
-
-
   }
 
   componentDidMount() {

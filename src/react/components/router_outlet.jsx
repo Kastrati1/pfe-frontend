@@ -1,7 +1,5 @@
 import React from "react";
-
 import { Route } from "react-router-dom";
-
 import HomeContainer from "./homepage/homepage_container";
 import InscriptionContainer from "./inscription/inscription_container";
 import LoginContainer from "./login/login_container";

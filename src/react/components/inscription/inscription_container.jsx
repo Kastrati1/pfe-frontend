@@ -22,6 +22,7 @@ class InscriptionContainer extends Component {
     this.signup = this.signup.bind(this);
     this.onFieldChange = this.onFieldChange.bind(this);
   }
+  
   onFieldChange(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -34,8 +35,6 @@ class InscriptionContainer extends Component {
     }
 
     const url = "http://localhost:8000/app1/users/";
-
-    const params2 = this.state;
     const params = {
       username: this.state.username,
       email: this.state.email,
@@ -43,7 +42,7 @@ class InscriptionContainer extends Component {
       last_name: this.state.last_name,
       password: this.state.password
     };
-    console.log(params, params2);
+    
     sendApiRequest({ url, method: "POST", params: params })
       .then(response => {
         console.log(response);
