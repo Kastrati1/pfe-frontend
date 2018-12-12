@@ -14,7 +14,7 @@ class UserProfileContainer extends Component {
 
 
   getCurrentUser() {
-    const url = "http://localhost:8000/app1/current_user/";
+    const url = "app1/current_user/";
     sendApiRequest({ url })
       .then(response => {
         this.setState({
@@ -34,7 +34,7 @@ class UserProfileContainer extends Component {
   }
 
   getUserProducts() {
-    const url = "http://localhost:8000/app1/current_user_products/";
+    const url = "app1/current_user_products/";
     sendApiRequest({ url })
       .then(response => {
         this.setState({
@@ -65,7 +65,7 @@ class UserProfileContainer extends Component {
     var rows = [];
     var products = this.state.user_products;
     for (var i = 0; i < this.state.user_products.length; i++) {
-      rows.push(<UserProductsComponent
+      rows.push(<UserProductsComponent key={i}
         product_name={products[i].fields.name}
         product_prix={products[i].fields.description}
         product_description={products[i].fields.price}

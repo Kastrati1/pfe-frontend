@@ -28,7 +28,7 @@ class LoginContainer extends Component {
     if (e) {
       e.preventDefault();
     }
-    const url = "http://localhost:8000/token-auth/";
+    const url = "token-auth/";
     //const params = this.state;
     const params = {
       username: this.state.username,
@@ -51,7 +51,7 @@ class LoginContainer extends Component {
 
   componentDidMount() {
     if (retrieveJWT()) {
-      const url = "http://localhost:8000/app1/current_user";
+      const url = "app1/current_user";
       sendApiRequest({ url })
         .then(response => {
           console.log(response);

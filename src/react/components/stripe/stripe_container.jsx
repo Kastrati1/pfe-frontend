@@ -36,7 +36,7 @@ class StripeContainer extends React.Component {
           this.state.quantity
         );
       } else {
-        console.log("stripe token not created");
+        console.error("stripe token not created");
       }
     });
   }
@@ -47,7 +47,7 @@ class StripeContainer extends React.Component {
       quantity: quantity
     };
 
-    const url = `http://localhost:8000/app1/pay`;
+    const url = `app1/pay`;
     sendApiRequest({ url, method: "POST", params: obj })
       .then(response => {
         this.setState({
@@ -57,9 +57,6 @@ class StripeContainer extends React.Component {
       .catch(error => {
         console.error(error);
       });
-  }
-  componentDidMount() {
-    console.log(this.props);
   }
   render() {
     if (this.state.paid) {

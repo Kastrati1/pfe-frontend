@@ -13,7 +13,7 @@ class HomepageContainer extends Component {
 
   //get request to backend to get all products
   getAllproducts(params) {
-    sendApiRequest({ url: "http://localhost:8000/app1/" })
+    sendApiRequest({ url: "app1/" })
       .then(products => {
         console.log(products);
         this.setState({
@@ -28,9 +28,6 @@ class HomepageContainer extends Component {
       });
   }
 
-  componentDidMount() {
-    //this.getAllproducts();
-  }
   render() {
     return <HomepageComponent products={this.state.products} />;
   }
