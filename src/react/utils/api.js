@@ -9,8 +9,12 @@ function sendApiRequest({ url, method = "GET", params = null }) {
   //headers.append("Access-Control-Allow-Origin", "*");
   
   if (jwt) headers.append("Authorization", "JWT " + jwt); //Can cause problems with django if null jwt is given
-
   const urlserver = "http://localhost:8000/";   // to replace with env variable
+  
+
+  console.log("passing by create react app", process.env.REACT_APP_TEST);
+  console.log("passing by create react app", process.env.REACT_APP_TESTAPI);
+
 
   const urlcomplet = urlserver + url;
 
