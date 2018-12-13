@@ -12,6 +12,7 @@ class ListProductsContainer extends React.Component {
     };
 
     this.getProducts = this.getProducts.bind(this);
+    
   }
 
   getProducts() {
@@ -33,6 +34,7 @@ class ListProductsContainer extends React.Component {
 
   componentDidMount() {
     this.getProducts();
+    console.log("the params are  ",this.props);
   }
 
   render() {

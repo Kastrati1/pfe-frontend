@@ -1,6 +1,6 @@
 import React from "react";
 import { CardElement } from "react-stripe-elements";
-import { Row, Col, Form, Button } from "react-bootstrap";
+import { Row, Col, Form, Button} from "react-bootstrap";
 import "./style.scss";
 
 const StripeComponent = ({ pay, onFieldChange, quantity }) => {
@@ -10,8 +10,9 @@ const StripeComponent = ({ pay, onFieldChange, quantity }) => {
 
         <Form onSubmit={e => pay(e)}>
           <h2> Stripe </h2>
-          <Form.Group as={Row} controlId="formHorizontalEmail">
+          <Form.Group as={Row} controlId="formHorizontalProductID">
             <Col sm={13} style={{ marginRight: "80%" }}>
+            
               <Form.Control
                 name="quantity"
                 type="number"
