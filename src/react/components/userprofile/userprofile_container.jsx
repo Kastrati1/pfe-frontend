@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { CardDeck } from 'reactstrap';
 import sendApiRequest from "../../utils/api";
 import UserProductsComponent from "./userproducts_component";
 import UserInfoComponent from "./userinfo_component";
@@ -7,17 +8,17 @@ class UserProfileContainer extends Component {
     super(props);
 
     this.state = {
-    first_name: "",
-    last_name: "",
-    username: "",
-    email: "",
-    user_products: [],
-    isLoading: true
-     };
-     this.getCurrentUser = this.getCurrentUser.bind(this);
-     this.getUserProducts = this.getUserProducts.bind(this);
+      first_name: "",
+      last_name: "",
+      username: "",
+      email: "",
+      user_products: [],
+      isLoading: true
+    };
+    this.getCurrentUser = this.getCurrentUser.bind(this);
+    this.getUserProducts = this.getUserProducts.bind(this);
   };
-  
+
 
   getCurrentUser() {
     const url = "app1/current_user/";
@@ -73,6 +74,7 @@ class UserProfileContainer extends Component {
         product_name={products[i].fields.name}
         product_prix={products[i].fields.description}
         product_description={products[i].fields.price}
+        product_photo={products[i].fields.image_url}
       />)
     }
     return (
@@ -83,7 +85,12 @@ class UserProfileContainer extends Component {
           first_name={this.state.first_name}
           last_name={this.state.last_name}
         />
-        <tbody>{rows}</tbody>
+
+
+        <CardDeck style={{textAlign: "center" }}>
+          {rows}
+        </CardDeck>
+
       </React.Fragment>
     );
   }

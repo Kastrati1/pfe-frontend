@@ -1,17 +1,16 @@
 import React from "react";
 import { Table } from 'reactstrap';
 
-const UserInfoComponent = ({ first_name, last_name, username, email}) => {
+const UserInfoComponent = ({ first_name, last_name, username}) => {
   return (
 
     <div>
-      <Table>
+      <Table className="table table-dark">
         <thead>
           <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-            <th>Email</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Username</th>
           </tr>
         </thead>
         <tbody>
@@ -19,7 +18,6 @@ const UserInfoComponent = ({ first_name, last_name, username, email}) => {
             <th> {first_name} </th>
             <th> {last_name} </th>
             <th> {username} </th>
-            <th> {email} </th>
           </tr>
         </tbody>
       </Table>
